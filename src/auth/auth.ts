@@ -1,6 +1,6 @@
 /// <reference path="../../types/hapi-auth-cookie.d.ts" />
 import * as Hapi from 'hapi';
-import a from 'hapi-auth-cookie';
+import hac from 'hapi-auth-cookie';
 import {User} from '../entity/user';
 import {CookiedUserData} from './cookie';
 
@@ -21,9 +21,6 @@ const validateAccountFromSessionCookie = async (
     request: Hapi.Request, 
     session: CookiedUserData) => {
   if (session) {
-    
-    console.log('Session info');
-    console.log(session);
     // TODO: aybe user caching instead of asking the server on every request...?
     const user = await User.findOne({id: session.id});
     if (user) {
@@ -39,7 +36,6 @@ const validateAccountFromSessionCookie = async (
     }
   }
 
-  console.log('Could not revive session....');
   return <ValidationResult> {
     valid: false
   };
@@ -50,7 +46,7 @@ const validateAccountFromSessionCookie = async (
  * Helper that sets up the auth strategy for the server.
  */
 export const setAuthProperties = async (server: Hapi.Server) => {
-  await server.register(a);
+  await server.register(hac);
   server.auth.strategy('cuid', 'cookie', {
     cookie: 'cuid',
     password: 'Ak720^kqwjklakjke(HDn2pnre2opks)(*DjDPQq3lnqdliduaokxn9knf3owqin98nmp93anrlifi',
