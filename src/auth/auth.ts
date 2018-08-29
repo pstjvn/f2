@@ -19,7 +19,7 @@ interface ValidationResult {
  */
 const validateAccountFromSessionCookie = async (
     request: Hapi.Request, 
-    session: CookiedUserData) => {
+    session: CookiedUserData): Promise<ValidationResult> => {
   if (session) {
     // TODO: aybe user caching instead of asking the server on every request...?
     const user = await User.findOne({id: session.id});
