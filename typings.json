@@ -1,0 +1,7 @@
+{
+  "name": "TestName",
+  "version": "1.0.0",
+  "globalDependencies": {
+      "hapi-auth-cookie": "file:typings/hapi-auth-cookie.d.ts"
+  }
+}

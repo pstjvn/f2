@@ -1,0 +1,34 @@
+{
+  "name": "f2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node --project tsconfig.json -- ./index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "typings": "types/index.d.ts",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "hapi": "^17.5.3",
+    "hapi-auth-basic": "^5.0.0",
+    "hapi-auth-cookie": "^9.0.0",
+    "joi": "^13.6.0",
+    "mysql": "^2.16.0",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.7"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
+    "@types/hapi": "^17.0.18",
+    "@types/hapi-auth-basic": "^5.0.4",
+    "@types/joi": "^13.4.3",
+    "@types/node": "^10.7.1",
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.1"
+  }
+}
