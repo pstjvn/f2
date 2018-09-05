@@ -46,6 +46,13 @@ export class User extends BaseEntity {
   })
   cid: string;
 
+  /**
+   * Load the advisor ID but not the advisor account so we can save some 
+   * bandwidth.
+   */
+  @Column({ nullable: true })
+  advisorId: string;
+
   @OneToOne(() => PasswordLink, {
     eager: true,
     nullable: true,
