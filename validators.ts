@@ -17,3 +17,19 @@ export const login = Joi.object().keys({
   // Alphanumerical, at least one digit, min 6 chars.
   password: Joi.string().alphanum().min(6).max(50).regex(/[0-9]/).required()
 });
+
+/**
+ * Validate the loading of users (/users)
+ */
+export const users = {
+  start: Joi.number().integer().min(0).default(0),
+  count: Joi.number().integer().min(1).default(10),
+  filter: Joi.string().default('')
+};
+
+/**
+ * Validate the user id (/user/:id)
+ */
+export const getUser = {
+  id: Joi.string().required()
+}
