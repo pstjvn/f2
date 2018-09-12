@@ -55,4 +55,44 @@ export const logout: Hapi.ServerRoute = {
   }
 };
 
-export const routes = [index, login, logout, test];
+// TODO: see if this can be reworked into controllers, altough it would require
+// generics that seem to not be supported by TS (Generic TypeOf instead of instance)
+// ALternatively see https://github.com/typeorm/typeorm/blob/master/docs/active-record-data-mapper.md
+// for creating custom repository.
+export const donnors: Hapi.ServerRoute = {
+  path: '/donnors',
+  method: 'GET',
+  handler: handlers.donnors,
+  options: {
+    auth: RequireAdvisor,
+    validate: {
+      query: validators.users
+    }
+  }
+};
+
+export const gddonnor: Hapi.ServerRoute = {
+  path: '/donnor/:id',
+  method: ['GET', 'DELETE'],
+  handler: handlers.getOrDeleteDonnor,
+  options: {
+    auth: RequireAdvisor,
+    validate: {
+      params: validators.getUser
+    }
+  }
+};
+
+export const ppdonnor: Hapi.ServerRoute = {
+  path: '/donnor/',
+  method: ['POST', 'PUT'],
+  handler: handlers.createOrUpdateDonnor,
+  options: {
+    auth: RequireAdvisor,
+    validate: {
+      payload: validators.createDonnor
+    }
+  }
+};
+
+export const routes = [index, login, logout, test, donnors, gddonnor, ppdonnor];

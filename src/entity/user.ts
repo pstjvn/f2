@@ -46,6 +46,9 @@ export class User extends BaseEntity {
   })
   cid: string;
 
+  @Column({nullable: true})
+  tel: string;
+  
   /**
    * Load the advisor ID but not the advisor account so we can save some 
    * bandwidth.

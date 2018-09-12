@@ -1,7 +1,7 @@
 /**
  * @fileoverview Provides the validators to use in route configuration.
  * 
- * Mostly conatins payload validators. 
+ * Mostly conatins payload parms and query validators. 
  * 
  * @author regardingscot@gmail.com (PeterStJ)
  */
@@ -19,7 +19,7 @@ export const login = Joi.object().keys({
 });
 
 /**
- * Validate the loading of users (/users)
+ * Validate the loading of users (/donnors && /advisors)
  */
 export const users = {
   start: Joi.number().integer().min(0).default(0),
@@ -28,8 +28,20 @@ export const users = {
 };
 
 /**
- * Validate the user id (/user/:id)
+ * Validate the user id (/user/:id && /donnor/:id)
  */
 export const getUser = {
   id: Joi.string().required()
-}
+};
+
+/**
+ * Validate payload for create and update donnor (/donnor)
+ */
+export const createDonnor = Joi.object().keys({
+  id: Joi.string(),
+  email: Joi.string().email({minDomainAtoms: 2}).required(),
+  firstname: Joi.string().min(2).required(),
+  lastname: Joi.string().min(2).required(),
+  nickname: Joi.string(),
+  cid: Joi.string()
+});
