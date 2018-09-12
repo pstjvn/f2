@@ -72,7 +72,7 @@ export const donnors: Hapi.ServerRoute = {
 };
 
 export const gddonnor: Hapi.ServerRoute = {
-  path: '/donnor/:id',
+  path: '/donnor/{id}',
   method: ['GET', 'DELETE'],
   handler: handlers.getOrDeleteDonnor,
   options: {
